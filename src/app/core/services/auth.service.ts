@@ -26,13 +26,15 @@ export class AuthService {
       password === this.adminCredentials.password
     ) {
       localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('currentUser',this.ADMIN);
       this.currentUserSubject.next(this.ADMIN);
     } else if (
       username === this.userCredentials.username &&
       password === this.userCredentials.password
     ) {
       localStorage.setItem('isLoggedIn', 'true');
-      this.currentUserSubject.next(this.USER);      
+      localStorage.setItem('currentUser', this.USER);
+      this.currentUserSubject.next(this.USER);
     }
     return this.currentUserSubject.asObservable();
   }
@@ -45,7 +47,23 @@ export class AuthService {
     this.currentUserSubject.next('');
   }
 
+  getCurrentRole() {
+    if (this.isLoggedIn()) {
+      if (this.currentUserSubject.value) {
+        return this.currentUserSubject.value;
+      } else {
+        const userRole = localStorage.getItem('currentUser') || '';
+        this.currentUserSubject.next(userRole);
+        return userRole;
+      }
+    } else {
+      return '';
+    }
+  }
   isLoggedIn(): boolean {
-    return Boolean(this.currentUserSubject.value);
+    return (
+      Boolean(this.currentUserSubject.value) ||
+      Boolean(localStorage.getItem('isLoggedIn'))
+    );
   }
 }
