@@ -8,8 +8,8 @@
         <img mat-card-sm-image [src]="productData.image">
         <p>{{ productData.description | showMore:showMore:maxChars}}
             <button *ngIf="productData.description.length > maxChars" mat-button color="primary"
-                (click)="toggleShowMoreText()">{{showMore ?  ("SHOP.CARD.SHOW_LESS" | translate) 
-                : ("SHOP.CARD.SHOW_MORE" | translate) }}</button>
+                (click)="toggleShowMoreText()">{{showMore ?  ("SHOP.CARD.SHOW_MORE" | translate) 
+                : ("SHOP.CARD.SHOW_LESS" | translate) }}</button>
         </p>
     </mat-card-content>
     <mat-card-actions>
