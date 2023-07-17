@@ -17,8 +17,8 @@ export class AuthService {
   };
   ADMIN = 'admin';
   USER = 'user';
-  currentUserSubject: BehaviorSubject<string> = new BehaviorSubject('');
-  isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  currentUserSubject$: BehaviorSubject<string> = new BehaviorSubject('');
+  isLoggedInSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private router: Router) {}
 
@@ -29,51 +29,51 @@ export class AuthService {
     ) {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('currentUser', this.ADMIN);
-      this.currentUserSubject.next(this.ADMIN);
+      this.currentUserSubject$.next(this.ADMIN);
     } else if (
       username === this.userCredentials.username &&
       password === this.userCredentials.password
     ) {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('currentUser', this.USER);
-      this.currentUserSubject.next(this.USER);
+      this.currentUserSubject$.next(this.USER);
     }
-    this.isLoggedInSubject.next(Boolean(this.currentUserSubject.value));
-    return this.currentUserSubject.asObservable();
+    this.isLoggedInSubject$.next(Boolean(this.currentUserSubject$.value));
+    return this.currentUserSubject$.asObservable();
   }
 
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     localStorage.setItem('isLoggedIn', 'false');
-    this.currentUserSubject.next('');
-    this.isLoggedInSubject.next(false);
+    this.currentUserSubject$.next('');
+    this.isLoggedInSubject$.next(false);
 
     this.router.navigate(['/login']);
   }
 
   checkLoggedIn() {
-    return this.isLoggedInSubject.asObservable();
+    return this.isLoggedInSubject$.asObservable();
   }
 
   getCurrentRole() {
     if (this.isLoggedIn()) {
-      this.isLoggedInSubject.next(true);
-      if (this.currentUserSubject.value) {
-        return this.currentUserSubject.value;
+      this.isLoggedInSubject$.next(true);
+      if (this.currentUserSubject$.value) {
+        return this.currentUserSubject$.value;
       } else {
         const userRole = localStorage.getItem('currentUser') || '';
-        this.currentUserSubject.next(userRole);
+        this.currentUserSubject$.next(userRole);
         return userRole;
       }
     } else {
-      this.isLoggedInSubject.next(false);
+      this.isLoggedInSubject$.next(false);
       return '';
     }
   }
   isLoggedIn(): boolean {
     return (
-      Boolean(this.currentUserSubject.value) ||
+      Boolean(this.currentUserSubject$.value) ||
       localStorage.getItem('isLoggedIn') === "true"
     );
   }

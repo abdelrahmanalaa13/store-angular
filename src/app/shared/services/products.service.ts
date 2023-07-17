@@ -8,40 +8,39 @@ import { ProductsBackendService } from './products-backend.service';
 })
 export class ProductsService {
   constructor(private productsBackendService: ProductsBackendService) {}
-  loadingSubject = new BehaviorSubject<boolean>(false);
-  productsSubject = new BehaviorSubject<Product[] | null>(null);
-  catagoriesSubject = new BehaviorSubject<string[] | null>(null);
+  loadingSubject$ = new BehaviorSubject<boolean>(false);
+  productsSubject$ = new BehaviorSubject<Product[] | null>(null);
+  catagoriesSubject$ = new BehaviorSubject<string[] | null>(null);
 
   setLoading(loading: boolean): void {
-    this.loadingSubject.next(loading);
+    this.loadingSubject$.next(loading);
   }
 
   getLoading() {
-    return this.loadingSubject.asObservable();
+    return this.loadingSubject$.asObservable();
   }
 
   setAllProducts(products: Product[], autoStopLoading = true): void {
-    this.productsSubject.next(products);
+    this.productsSubject$.next(products);
     autoStopLoading && this.setLoading(false);
   }
 
   setAllCatagories(catagories: string[]): void {
     catagories.unshift('all');
-    this.catagoriesSubject.next(catagories);
+    this.catagoriesSubject$.next(catagories);
   }
 
   getAllProducts() {
-    return this.productsSubject.asObservable();
+    return this.productsSubject$.asObservable();
   }
 
   getCatagories() {
-    return this.catagoriesSubject.asObservable();
+    return this.catagoriesSubject$.asObservable();
   }
 
   getCatagoriesFromBE() {
     this.productsBackendService.getCategories().subscribe((catagories) => {
       if (catagories) {
-        // catagories.unshift('all');
         this.setAllCatagories(catagories);
       }
     });
@@ -56,7 +55,7 @@ export class ProductsService {
   }
 
   editProduct(editedProduct: Product) {
-    const currentProducts = this.productsSubject.value;
+    const currentProducts = this.productsSubject$.value;
     if (!currentProducts) {
       return;
     }
@@ -78,7 +77,7 @@ export class ProductsService {
   }
 
   addProduct(newProduct: Product) {
-    const currentProducts = this.productsSubject.value;
+    const currentProducts = this.productsSubject$.value;
     if (!currentProducts) {
       return;
     }
@@ -93,7 +92,7 @@ export class ProductsService {
       });
   }
   deleteProduct(id: number) {
-    const currentProducts = this.productsSubject.value;
+    const currentProducts = this.productsSubject$.value;
     if (!currentProducts) {
       return;
     }
