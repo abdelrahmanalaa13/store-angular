@@ -6,7 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { HeaderComponent } from './components/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
@@ -19,7 +18,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { showMorePipe } from './pipes/show-more.pipe';
 
 @NgModule({
-  declarations: [HeaderComponent, LoaderComponent, FilterPipe, showMorePipe],
+  declarations: [LoaderComponent, FilterPipe, showMorePipe],
   imports: [
     CommonModule,
     FormsModule,

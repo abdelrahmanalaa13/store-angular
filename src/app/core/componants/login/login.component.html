@@ -1,9 +1,9 @@
 <div class="login-container">
-  <h2>Login</h2>
+  <h1>Welcome to the Store</h1>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
       <mat-label>Username</mat-label>
-      <input matInput formControlName="username" required>
+      <input matInput type="text" formControlName="username" required>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>

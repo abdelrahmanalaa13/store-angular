@@ -1,5 +1,6 @@
 <div class="add-product">
-    <button mat-raised-button (click)="openDialog(false, productDialog)">Add Product</button>
+    <button color="primary" mat-raised-button (click)="openDialog(false, productDialog)"><mat-icon>add</mat-icon>Add
+        Product</button>
 </div>
 <div>
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8" matSort>
@@ -39,9 +40,10 @@
                             {{element.description}}
                         </div>
                         <div class="expanded-element-actions">
-                            <button mat-raised-button
-                                (click)="openDialog(true, productDialog, element)"><mat-icon>edit</mat-icon></button>
-                            <button mat-raised-button (click)="deleteProduct(element.id)">delete</button>
+                            <button mat-raised-button color="primary"
+                                (click)="openDialog(true, productDialog, element)"><mat-icon>edit</mat-icon>Edit</button>
+                            <button color="warn" mat-raised-button
+                                (click)="deleteProduct(element.id)"><mat-icon>delete</mat-icon>delete</button>
                         </div>
                     </div>
                 </div>

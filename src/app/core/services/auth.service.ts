@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 // import { Role } from './roles.type';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -17,8 +18,9 @@ export class AuthService {
   ADMIN = 'admin';
   USER = 'user';
   currentUserSubject: BehaviorSubject<string> = new BehaviorSubject('');
-  loginObservable: Observable<string> = new Observable();
-  constructor() {}
+  isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+  constructor(private router: Router) {}
 
   login(username: string, password: string) {
     if (
@@ -26,7 +28,7 @@ export class AuthService {
       password === this.adminCredentials.password
     ) {
       localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('currentUser',this.ADMIN);
+      localStorage.setItem('currentUser', this.ADMIN);
       this.currentUserSubject.next(this.ADMIN);
     } else if (
       username === this.userCredentials.username &&
@@ -42,9 +44,14 @@ export class AuthService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-
     localStorage.setItem('isLoggedIn', 'false');
     this.currentUserSubject.next('');
+
+    this.router.navigate(['/login']);
+  }
+
+  checkLoggedIn() {
+    return this.isLoggedInSubject.asObservable();
   }
 
   getCurrentRole() {

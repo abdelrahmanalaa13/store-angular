@@ -1,12 +1,14 @@
+<app-loader></app-loader>
+
 <mat-toolbar color="primary">
     <div class="logo-container">
-        <img src="path/to/logo.png" alt="Logo">
+        STORE
     </div>
     <div class="spacer"></div>
     <button mat-icon-button (click)="toggleLanguage()">
         <mat-icon>language</mat-icon>
     </button>
-    <button mat-icon-button (click)="logout()">
+    <button *ngIf="isLoggedIn" mat-icon-button (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
     </button>
 </mat-toolbar>
