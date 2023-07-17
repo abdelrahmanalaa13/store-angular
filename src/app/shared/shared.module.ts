@@ -14,8 +14,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './components/loader/loader.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FilterPipe } from './pipes/filter.pipe';
+import { showMorePipe } from './pipes/show-more.pipe';
+
 @NgModule({
-  declarations: [HeaderComponent, LoaderComponent],
+  declarations: [HeaderComponent, LoaderComponent, FilterPipe, showMorePipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -31,6 +35,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatCardModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatTabsModule,
   ],
   exports: [
     FormsModule,
@@ -47,6 +52,9 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatProgressSpinnerModule,
     MatDialogModule,
     LoaderComponent,
+    MatTabsModule,
+    FilterPipe,
+    showMorePipe,
   ],
 })
 export class SharedModule {}

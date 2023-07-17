@@ -1,5 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from 'src/app/shared/models/product.model';
@@ -20,10 +27,7 @@ export class ProductFormComponent implements OnInit {
 
   productForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private productsBackendService: ProductsBackendService
-  ) {
+  constructor(private fb: FormBuilder) {
     this.productForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],

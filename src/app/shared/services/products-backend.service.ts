@@ -30,4 +30,8 @@ export class ProductsBackendService {
   deleteProduct(id: number): Observable<Product> {
     return this.http.delete<Product>(`${this.apiUrl}/${id}`);
   }
+
+  getCategories(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/categories`);
+  }
 }
