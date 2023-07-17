@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from '../../services/storage.service';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-loader',
@@ -8,9 +8,9 @@ import { StorageService } from '../../services/storage.service';
 })
 export class LoaderComponent implements OnInit {
   isLoadingResults = true;
-  constructor(private storageService: StorageService) {}
+  constructor(private productsService: ProductsService) {}
   ngOnInit(): void {
-    this.storageService.getLoading().subscribe(loading => this.isLoadingResults = loading);
+    this.productsService.getLoading().subscribe(loading => this.isLoadingResults = loading);
   }
   
 }
