@@ -2,11 +2,9 @@
 
 This is an e-commerce platform that allows users to browse and purchase products. It has the following features:
 
-- A homepage that displays a list of all products.
-- A product details page that displays detailed information about a product, including its title, description, price, and image.
-- The ability to add products to a shopping cart and remove them from the cart.
-- The ability to checkout and purchase the items in the shopping cart.
-- A dashboard for administrators to manage products, categories, and orders.
+- Login page (with static credentials)
+- A homepage that displays all the products for the User.
+- An admin page that displays a list of all products for the admin with the apply to add, edit, and delete products 
 
 ## Getting Started
 
@@ -38,10 +36,22 @@ This will start and open the app to be used in offline mode.
 
 
 ## Usage
+As user:
+```
+username: user
+password: user
+```
 
-You can use this app to browse and purchase products. The homepage displays a list of all products, and you can click on a product to view its details. You can also add products to your shopping cart and remove them from the cart. Once you're ready to checkout, you can click on the checkout button to purchase the items in your cart.
+You can use this app to browse products. The homepage displays a list of all categories and products with the details of each product and the ability to switch between the categories.
 
-If you're an administrator, you can log in to the dashboard to manage products, categories, and orders. The dashboard allows you to add, edit, and delete products and categories, as well as view and fulfill orders.
+
+As Admin: 
+```
+username: admin
+password: admin
+```
+
+If you're an administrator, you can log in to the dashboard to manage products and categories. The dashboard allows you to add, edit, and delete products.
 
 
 ## Credits
