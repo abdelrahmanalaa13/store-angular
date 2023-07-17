@@ -11,22 +11,30 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class HeaderComponent {
   isLanguageEnglish = true; // replace with your language toggle logic
   isLoggedIn: boolean = false;
+  currentLang: 'en' | 'ar' = 'en';
   constructor(
     private authService: AuthService,
     private translate: TranslateService
-  ) {}
+  ) {
+    translate.use('en');
+  }
 
   ngOnInit() {
     this.authService
       .checkLoggedIn()
       .subscribe((isLoggedIn: boolean) => (this.isLoggedIn = isLoggedIn));
-    this.translate.setDefaultLang('en');
   }
   logout() {
     this.authService.logout();
   }
 
   toggleLanguage() {
-    this.translate.use(this.translate.currentLang === 'en' ? 'ar' : 'en');
+    if (this.translate.currentLang === 'en') {
+      this.translate.use('ar');
+      document.body.dir = 'rtl';
+    } else {
+      this.translate.use('en');
+      document.body.dir = 'ltr';
+    }
   }
 }

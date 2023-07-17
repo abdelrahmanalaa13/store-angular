@@ -16,6 +16,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FilterPipe } from './pipes/filter.pipe';
 import { showMorePipe } from './pipes/show-more.pipe';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [LoaderComponent, FilterPipe, showMorePipe],
@@ -35,6 +36,7 @@ import { showMorePipe } from './pipes/show-more.pipe';
     MatProgressSpinnerModule,
     MatDialogModule,
     MatTabsModule,
+    TranslateModule
   ],
   exports: [
     FormsModule,
@@ -54,6 +56,7 @@ import { showMorePipe } from './pipes/show-more.pipe';
     MatTabsModule,
     FilterPipe,
     showMorePipe,
+    TranslateModule
   ],
 })
 export class SharedModule {}

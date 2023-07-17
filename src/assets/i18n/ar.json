@@ -1,1 +1,28 @@
-
+{
+    "CORE": {
+        "LOGIN": {
+            "WELCOME_MSG": "مرحبا في المتجر",
+            "LOGIN": "تسجيل الدخول",
+            "USERNAME": "اسم السمتخدم",
+            "PASSWORD": "كلمة المرور"
+        },
+        "HEADER": {
+            "STORE": "المتجر"
+        }
+    },
+    "SHOP": {
+        "CARD" : {
+            "SHOW_MORE": "المزيد",
+            "SHOW_LESS": "اقل",
+            "ADD_TO_CART": "اضف الي العربة",
+            "SOON": "قريبا"
+        }
+    },
+    "ADMIN": {
+        "ACTIONS": {
+            "ADD": "اضف منتج",
+            "EDIT": "تعديل",
+            "DELETE": "حذف"
+        }
+    }
+}

@@ -38,6 +38,7 @@ export class AuthService {
       localStorage.setItem('currentUser', this.USER);
       this.currentUserSubject.next(this.USER);
     }
+    this.isLoggedInSubject.next(Boolean(this.currentUserSubject.value));
     return this.currentUserSubject.asObservable();
   }
 
@@ -46,6 +47,7 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     localStorage.setItem('isLoggedIn', 'false');
     this.currentUserSubject.next('');
+    this.isLoggedInSubject.next(false);
 
     this.router.navigate(['/login']);
   }
@@ -56,6 +58,7 @@ export class AuthService {
 
   getCurrentRole() {
     if (this.isLoggedIn()) {
+      this.isLoggedInSubject.next(true);
       if (this.currentUserSubject.value) {
         return this.currentUserSubject.value;
       } else {
@@ -64,13 +67,14 @@ export class AuthService {
         return userRole;
       }
     } else {
+      this.isLoggedInSubject.next(false);
       return '';
     }
   }
   isLoggedIn(): boolean {
     return (
       Boolean(this.currentUserSubject.value) ||
-      Boolean(localStorage.getItem('isLoggedIn'))
+      localStorage.getItem('isLoggedIn') === "true"
     );
   }
 }

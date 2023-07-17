@@ -16,6 +16,7 @@ import { ProductFormComponent } from '../product-form/product-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ComponentType } from '@angular/cdk/portal';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-list',
@@ -42,7 +43,6 @@ export class ProductListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dialogRef: any;
   constructor(
-    private productsBackendService: ProductsBackendService,
     public dialog: MatDialog,
     private storageService: StorageService
   ) {}
@@ -58,7 +58,7 @@ export class ProductListComponent implements OnInit {
         setTimeout(() => this.applyTableData(products));
         console.log(products);
       }
-    })
+    });
   }
 
   applyTableData(products: Product[]) {

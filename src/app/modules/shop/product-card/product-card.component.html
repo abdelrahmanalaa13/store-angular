@@ -8,11 +8,11 @@
         <img mat-card-sm-image [src]="productData.image">
         <p>{{ productData.description | showMore:showMore:maxChars}}
             <button *ngIf="productData.description.length > maxChars" mat-button color="primary"
-                (click)="toggleShowMoreText()">{{showMore ? "Show Less"
-                : "Show More"}}</button>
+                (click)="toggleShowMoreText()">{{showMore ?  ("SHOP.CARD.SHOW_LESS" | translate) 
+                : ("SHOP.CARD.SHOW_MORE" | translate) }}</button>
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary" [disabled]="true">Add To Cart <small>(soon)</small></button>
+        <button mat-raised-button color="primary" [disabled]="true">{{ "SHOP.CARD.ADD_TO_CART" | translate }} <small>({{ "SHOP.CARD.SOON" | translate }})</small></button>
     </mat-card-actions>
 </mat-card>

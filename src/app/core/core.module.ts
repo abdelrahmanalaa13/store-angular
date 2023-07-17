@@ -4,6 +4,7 @@ import { LoginComponent } from './componants/login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './componants/header/header.component';
+import {BidiModule} from '@angular/cdk/bidi';
 
 
 
@@ -16,7 +17,8 @@ import { HeaderComponent } from './componants/header/header.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    BidiModule
   ],
   exports: [
     LoginComponent,
