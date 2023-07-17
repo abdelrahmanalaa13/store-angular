@@ -1,11 +1,9 @@
 <div class="add-product">
-    <button color="primary" mat-raised-button (click)="openDialog(false, productDialog)"><mat-icon>add</mat-icon>{{ "ADMIN.ACTIONS.ADD" | translate }}</button>
+    <button color="primary" mat-raised-button (click)="openDialog(false, productDialog)"><mat-icon>add</mat-icon>{{
+        "ADMIN.ACTIONS.ADD" | translate }}</button>
 </div>
 <div>
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8" matSort>
-
-
-
         <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by {{column}}">
                 {{column}} </th>
@@ -40,9 +38,11 @@
                         </div>
                         <div class="expanded-element-actions">
                             <button mat-raised-button color="primary"
-                                (click)="openDialog(true, productDialog, element)"><mat-icon>edit</mat-icon>{{ "ADMIN.ACTIONS.EDIT" | translate }}</button>
+                                (click)="openDialog(true, productDialog, element)"><mat-icon>edit</mat-icon>{{
+                                "ADMIN.ACTIONS.EDIT" | translate }}</button>
                             <button color="warn" mat-raised-button
-                                (click)="deleteProduct(element.id)"><mat-icon>delete</mat-icon>{{ "ADMIN.ACTIONS.DELETE" | translate }}</button>
+                                (click)="deleteProduct(element.id)"><mat-icon>delete</mat-icon>{{ "ADMIN.ACTIONS.DELETE"
+                                | translate }}</button>
                         </div>
                     </div>
                 </div>

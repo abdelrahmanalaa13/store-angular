@@ -16,6 +16,8 @@ export class ProductsComponent implements OnInit {
   filteredProducts: Product[] = [];
   selectedCategoryIndex = 0;
   isLoading = true;
+  isAnimating = false;
+  animationDuration = 1000;
   constructor(
     private storageService: StorageService,
     private filterPipe: FilterPipe
@@ -51,6 +53,7 @@ export class ProductsComponent implements OnInit {
   }
 
   filterProducts(categoryIndex: number) {
+    this.isAnimating = true;
     this.selectedCategoryIndex = categoryIndex;
     setTimeout(() => {
       this.filteredProducts =
@@ -61,6 +64,7 @@ export class ProductsComponent implements OnInit {
               this.catagories[categoryIndex],
               'category'
             );
-    });
+      this.isAnimating = false;
+    }, this.animationDuration * 0.7);
   }
 }
