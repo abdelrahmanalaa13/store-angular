@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/models/product.model';
 import { FilterPipe } from 'src/app/shared/pipes/filter.pipe';
-import { StorageService } from 'src/app/shared/services/storage.service';
+import { ProductsService } from 'src/app/shared/services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -19,21 +19,21 @@ export class ProductsComponent implements OnInit {
   isAnimating = false;
   animationDuration = 1000;
   constructor(
-    private storageService: StorageService,
+    private productsService: ProductsService,
     private filterPipe: FilterPipe
   ) {}
   ngOnInit(): void {
     this.getCategories();
-    this.storageService
+    this.productsService
       .getLoading()
       .subscribe((isLoading) => (this.isLoading = isLoading));
   }
 
   getCategories() {
-    this.storageService.setLoading(true);
-    this.storageService.getCatagories().subscribe((catagories) => {
+    this.productsService.setLoading(true);
+    this.productsService.getCatagories().subscribe((catagories) => {
       if (!catagories) {
-        this.storageService.getCatagoriesFromBE();
+        this.productsService.getCatagoriesFromBE();
       } else {
         this.catagories = catagories;
         this.getProducts();
@@ -42,9 +42,9 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    this.storageService.getAllProducts().subscribe((products) => {
+    this.productsService.getAllProducts().subscribe((products) => {
       if (!products) {
-        this.storageService.getAllProductsFromBE();
+        this.productsService.getAllProductsFromBE();
       } else {
         this.allProducts = products;
         this.filterProducts(this.selectedCategoryIndex);

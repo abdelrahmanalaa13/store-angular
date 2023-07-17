@@ -15,7 +15,7 @@ import {
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ComponentType } from '@angular/cdk/portal';
-import { StorageService } from 'src/app/shared/services/storage.service';
+import { ProductsService } from 'src/app/shared/services/products.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -44,15 +44,15 @@ export class ProductListComponent implements OnInit {
   dialogRef: any;
   constructor(
     public dialog: MatDialog,
-    private storageService: StorageService
+    private productsService: ProductsService
   ) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.storageService.getAllProducts().subscribe((products) => {
+    this.productsService.getAllProducts().subscribe((products) => {
       if (!products) {
-        this.storageService.getAllProductsFromBE();
+        this.productsService.getAllProductsFromBE();
       } else {
         this.dataSource = new MatTableDataSource(products);
         setTimeout(() => this.applyTableData(products));
@@ -77,15 +77,15 @@ export class ProductListComponent implements OnInit {
   }
 
   deleteProduct(id: number) {
-    this.storageService.deleteProduct(id);
+    this.productsService.deleteProduct(id);
   }
 
   editProduct(data: Product) {
-    this.storageService.editProduct(data);
+    this.productsService.editProduct(data);
     this.dialogRef.close();
   }
   addProduct(productData: Product) {
-    this.storageService.addProduct(productData);
+    this.productsService.addProduct(productData);
     this.dialogRef.close();
   }
 }

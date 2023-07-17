@@ -6,7 +6,7 @@ import { ProductsBackendService } from './products-backend.service';
 @Injectable({
   providedIn: 'root',
 })
-export class StorageService {
+export class ProductsService {
   constructor(private productsBackendService: ProductsBackendService) {}
   loadingSubject = new BehaviorSubject<boolean>(false);
   productsSubject = new BehaviorSubject<Product[] | null>(null);
