@@ -1,0 +1,28 @@
+{
+    "CORE": {
+        "LOGIN": {
+            "WELCOME_MSG": "Welcome to the Store",
+            "LOGIN": "LogIn",
+            "USERNAME": "Username",
+            "PASSWORD": "Password"
+        },
+        "HEADER": {
+            "STORE": "STORE"
+        }
+    },
+    "SHOP": {
+        "CARD" : {
+            "SHOW_MORE": "Show More",
+            "SHOW_LESS": "Show Less",
+            "ADD_TO_CART": "Add To Cart",
+            "SOON": "soon"
+        }
+    },
+    "ADMIN": {
+        "ACTIONS": {
+            "ADD": "Add Product",
+            "EDIT": "Edit",
+            "DELETE": "Delete"
+        }
+    }
+}

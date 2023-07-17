@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>{{ isEdit ? 'Edit Product' : 'Add Product' }}</h1>
+<div *ngIf="productData" class="mat-dialog-content" mat-dialog-content>
+    <form mat-form [formGroup]="productForm">
+        <mat-form-field>
+            <input matInput formControlName="title" placeholder="Title">
+            <mat-error *ngIf="productForm.get('title')?.hasError('required')">Title is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="description" placeholder="Description">
+            <mat-error *ngIf="productForm.get('description')?.hasError('required')">Description is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="price" type="number" placeholder="Price">
+            <mat-error *ngIf="productForm.get('price')?.hasError('required')">Price is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="category" placeholder="Category">
+            <mat-error *ngIf="productForm.get('category')?.hasError('required')">Category is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="image" placeholder="image">
+            <mat-error *ngIf="productForm.get('image')?.hasError('required')">Image is required</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div class="mat-dialog-actions" mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button [disabled]="!productForm.valid" color="primary" (click)="submit()">{{ isEdit ? 'Save' : 'Add' }}</button>
+</div>

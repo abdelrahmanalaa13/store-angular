@@ -1,0 +1,14 @@
+<app-loader></app-loader>
+
+<mat-toolbar color="primary">
+    <div class="logo-container">
+        {{ "CORE.HEADER.STORE" | translate }}
+    </div>
+    <div class="spacer"></div>
+    <button mat-icon-button (click)="toggleLanguage()">
+        <mat-icon>language</mat-icon>
+    </button>
+    <button *ngIf="isLoggedIn" mat-icon-button (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
+</mat-toolbar>

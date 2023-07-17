@@ -1,0 +1,15 @@
+mat-card-subtitle {
+  text-align: end;
+}
+.mat-mdc-card-header {
+  display: block;
+}
+.mdc-card__actions {
+  margin-top: auto;
+}
+
+@media only screen and (min-width: 720px) {
+  .mat-mdc-card {
+    min-height: 300px;
+  }
+}

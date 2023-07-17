@@ -1,0 +1,16 @@
+<ng-container *ngIf="!isLoading">
+    <mat-tab-group (selectedIndexChange)="filterProducts($event)" [selectedIndex]="selectedCategoryIndex"
+        mat-align-tabs="center" backgroundColor="primary">
+        <ng-container *ngFor="let category of catagories">
+            <mat-tab label="{{ category | uppercase }}">
+                <div class="cards-container">
+                    <ng-container *ngFor="let product of filteredProducts">
+
+                        <app-product-card [productData]="product"></app-product-card>
+
+                    </ng-container>
+                </div>
+            </mat-tab>
+        </ng-container>
+    </mat-tab-group>
+</ng-container>
