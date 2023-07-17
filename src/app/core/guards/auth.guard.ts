@@ -13,7 +13,6 @@ export const authGuard: CanActivateFn = (
 ) => {
   const authService: AuthService = inject(AuthService);
   const router: Router = inject(Router);
-  console.log(state.url);
 
   const currentUser = authService.getCurrentRole();
   if (state.url.includes('admin')) {
